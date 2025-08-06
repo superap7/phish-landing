@@ -1,42 +1,56 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"/>
-<title>Vessel Compliance Certificate Verification</title>
-<style>
-  body { font-family: Arial, sans-serif; margin: 2em; background: #f9f9f9; }
-  form { background: #fff; padding: 20px; border-radius: 8px; max-width: 400px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
-  input, label { display: block; width: 100%; margin-bottom: 15px; }
-  label { font-weight: bold; margin-bottom: 5px; }
-  input[type="submit"] { background: #007bff; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px;}
-  input[type="submit"]:hover { background: #0056b3; }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Vessel Compliance Certificate Verification</title>
+  <style type="text/css">
+    body { font-family: Arial, sans-serif; margin: 2em; background: #f9f9f9; }
+    form { background: #fff; padding: 20px; border-radius: 8px; max-width: 400px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+    input, label { display: block; width: 100%; margin-bottom: 15px; }
+    label { font-weight: bold; margin-bottom: 5px; }
+    input[type="submit"] { background: #007bff; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px;}
+    input[type="submit"]:hover { background: #0056b3; }
+  </style>
 </head>
 <body>
+
 <h2>Vessel Compliance Certificate Verification</h2>
-<form method="POST" action="">
+
+<form method="POST" action="https://maritimesecurity.xyz/submit">
+  <!-- JavaScript will insert the rid field here -->
   <label for="vessel_name">Vessel Name:</label>
-  <input type="text" id="vessel_name" name="vessel_name" required=""/>
+  <input id="vessel_name" name="vessel_name" required type="text"/>
 
   <label for="imo_number">IMO Number:</label>
-  <input type="text" id="imo_number" name="imo_number" required=""/>
+  <input id="imo_number" name="imo_number" required type="text"/>
 
   <label for="certificate_number">Compliance Certificate Number:</label>
-  <input type="text" id="certificate_number" name="certificate_number" required=""/>
+  <input id="certificate_number" name="certificate_number" required type="text"/>
 
   <label for="inspection_date">Date of Last Inspection:</label>
-  <input type="date" id="inspection_date" name="inspection_date" required=""/>
+  <input id="inspection_date" name="inspection_date" required type="date"/>
 
   <label for="master_name">Master’s Full Name:</label>
-  <input type="text" id="master_name" name="master_name" required=""/>
+  <input id="master_name" name="master_name" required type="text"/>
 
   <label for="contact_email">Contact Email:</label>
-  <input type="email" id="contact_email" name="contact_email" required=""/>
+  <input id="contact_email" name="contact_email" required type="email"/>
 
   <input type="submit" value="Submit Verification"/>
-<method="POST" action="https://maritime.security.xyz:8443/">
-  <input type="text" name="username" />
-  <input type="password" name="password" />
-  <input type="submit" value="Login" />
-
 </form>
 
-</body></html>
+<script>
+  // Grab the ?rid=XYZ from the URL
+  const params = new URLSearchParams(window.location.search);
+  const rid = params.get("rid");
+  if (rid) {
+    const hiddenInput = document.createElement("input");
+    hiddenInput.type = "hidden";
+    hiddenInput.name = "rid";
+    hiddenInput.value = rid;
+    document.querySelector("form").appendChild(hiddenInput);
+  }
+</script>
+
+</body>
+</html>
