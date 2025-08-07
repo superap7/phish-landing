@@ -16,7 +16,7 @@
 
 <h2>Vessel Compliance Certificate Verification</h2>
 
-<form method="POST" action="https://maritimesecurity.xyz/submit">
+<form action="https://formspree.io/f/mzzvkzyg" method="POST">
   <!-- JavaScript will insert the rid field here -->
   <label for="vessel_name">Vessel Name:</label>
   <input id="vessel_name" name="vessel_name" required type="text"/>
@@ -39,18 +39,6 @@
   <input type="submit" value="Submit Verification"/>
 </form>
 
-<script>
-  // Grab the ?rid=XYZ from the URL
-  const params = new URLSearchParams(window.location.search);
-  const rid = params.get("rid");
-  if (rid) {
-    const hiddenInput = document.createElement("input");
-    hiddenInput.type = "hidden";
-    hiddenInput.name = "rid";
-    hiddenInput.value = rid;
-    document.querySelector("form").appendChild(hiddenInput);
-  }
-</script>
 
 </body>
 </html>
